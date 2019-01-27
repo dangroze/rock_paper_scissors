@@ -5,6 +5,7 @@ require 'spec_helper'
 # I would like to register my name before playing an online game
 
 feature 'Playing a game' do
+  PLAY_SEED = 221563
   before do
     sign_in_and_play
   end
@@ -30,5 +31,32 @@ end
   end
 
 # The game will choose a random option
+  scenario 'game chooses a random option' do
+    srand(PLAY_SEED)
+    click_button 'Rock'
+    expect(page).to have_content 'Computer chose Scissors!'
+  end
+# As a marketeer
+# So I can play a game
+# I want to see a winner
+  context 'end of game messages' do
+    before do
+      srand(PLAY_SEED)
+    end
 
+    scenario 'You win!' do
+      click_button 'Rock'
+      expect(page).to have_content 'Well done, you win!'
+    end
+
+    scenario 'You lose!' do
+      click_button 'Paper'
+      expect(page).to have_content 'You lose this time!'
+    end
+
+    scenario 'Draw!' do
+      click_button 'Scissors'
+      expect(page).to have_content "It's a draw!"
+    end
+  end
 end

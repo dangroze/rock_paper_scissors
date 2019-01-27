@@ -9,16 +9,23 @@ feature 'Playing a game' do
     sign_in_and_play
   end
 
-  scenario 'can see name' do
+  scenario 'Can see name' do
     expect(page).to have_content('Dan')
 end
 
 # As a marketeer
 # I want to see the choices(rock, paper, scissors)
 
-  scenario 'can see Rock, Paper, Scissors' do
-    expect(page).to have_content('Rock')
-    expect(page).to have_content('Paper')
-    expect(page).to have_content('Scissors')
+  scenario 'Can see Rock, Paper, Scissors' do
+    expect(page).to have_button('Rock')
+    expect(page).to have_button('Paper')
+    expect(page).to have_button('Scissors')
+  end
+
+# The marketeer can choose one option
+
+  scenario 'Can choose an option' do
+    click_button 'Rock'
+    expect(page).to have_content('You chose Rock!')
   end
 end

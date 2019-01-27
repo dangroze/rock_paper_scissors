@@ -19,4 +19,13 @@ class Game
     RULES[@weapon.to_sym][@computer.to_sym]
   end
 
+  def show_results
+    if self.rule == :win
+      "Well done, you win!"
+    elsif self.rule == :lose
+      "You lose this time!"
+    else
+      "It's a draw!"
+    end
+  end
 end

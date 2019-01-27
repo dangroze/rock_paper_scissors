@@ -22,4 +22,12 @@ RSpec.describe Game do
       expect(game.rule).to eq :win
     end
   end
+
+  describe "#show_results" do
+    it "Player picks Rock and computer picks Scissors" do
+      # expect(Computer.new).to receive(:option).and_return('Paper')
+      game.instance_variable_set(:@computer, 'Paper')
+      expect(game.show_results).to eq("You lose this time!")
+    end
+  end
 end

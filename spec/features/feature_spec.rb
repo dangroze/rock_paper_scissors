@@ -26,6 +26,8 @@ end
 
   scenario 'Can choose an option' do
     click_button 'Rock'
-    expect(page).to have_content('You chose Rock!')
+    expect(page).to have_content('Dan chose Rock!')
   end
+
+# The game will choose a random option
 end

@@ -1,3 +1,4 @@
+require './lib/game'
 require './lib/player'
 require './lib/computer'
 require 'sinatra/base'
@@ -21,7 +22,10 @@ class RPS < Sinatra::Base
 
   get '/game' do
     @player1_name = $player1.name
-    @option = params[:option]
+    @game = Game.new(@player1_name, params[:weapon])
+    @weapon = @game.weapon
+    @computer = @game.computer
+    @rule = @game.show_results
     erb :game
   end
 

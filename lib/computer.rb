@@ -1,5 +1,5 @@
 class Computer
-  OPTIONS = ['rock','paper','scissors']
+  OPTIONS = ['Rock','Paper','Scissors']
 
   def option
     OPTIONS.sample
